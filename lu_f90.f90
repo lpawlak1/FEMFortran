@@ -25,7 +25,7 @@ CONTAINS
     !  ***************************************************************
      Subroutine LUDCMP(A,N,INDX,D,CODE)
      IMPLICIT NONE
-     integer, parameter :: nmax = 100
+     integer, parameter :: nmax = 3000 ! to jest max globalny, ważna zmienna
      real, parameter :: tiny = 1.5D-16
 
      real*8, intent(inout), dimension(N,N) :: A

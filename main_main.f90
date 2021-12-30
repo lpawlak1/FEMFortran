@@ -1,30 +1,31 @@
-Program test_lu_solver
-  USE LU
+Program FEM1DHeat
+  use LU
   use utilities
   implicit none
 
-  real*8, pointer ::  A(:,:)   !real matrix (n x n)
-  real*8, pointer ::  B(:)     !real vector (n)
-  real*8, pointer ::  temp(:)  !real temporary vector (n+1)
-  integer,pointer ::  INDX(:)  !integer vector (n)
-  real*8 :: temp2
+  real*8, pointer  ::  A(:,:)   !real matrix (n x n)
+  real*8, pointer  ::  B(:)     !real vector (n)
+  ! temp and indx are for LUDCMP and LUBKSB
+  real*8, pointer  ::  temp(:)  !real temporary vector (n+1)
+  integer, pointer ::  INDX(:)  !integer vector (n)
+  integer          ::  d, rc !rc is return code, d i dont really use
 
-  integer :: i, d, rc
-
-  integer :: n = 3
-  integer :: row, col
+  integer          ::  row, col !used in loops
+  integer          ::  n = 3 !main N parameter, default here, immutable
 
   !plots
-  integer :: m
-  real*8 :: xi, y
-  CHARACTER(LEN=12) :: args1
+  integer          ::  m !nu of points in plot
+  real*8, parameter::  temp0 = 0.0d+00 !temporary 0.0d+00 value
 
+  !argument
+  character(LEN=12)::  args1
   if (COMMAND_ARGUMENT_COUNT() > 0) then
     call GET_COMMAND_ARGUMENT(1, args1)
     read(args1, *) n
   end if
+  !end argument
 
-  m = 1000
+  m = 1000 ! num of points in plot
 
   !dynamic allocations
   allocate(A(n,n))
@@ -40,10 +41,9 @@ Program test_lu_solver
 
 
   ! Vector B
-  temp2 = 0.0
-  B = temp2
+  B = temp0
   do row=1,n
-    B(row) = 20.0*v(row-1, temp2, n)
+    B(row) = 20.0*v(row-1, temp0, n)
   end do
 
 !call LU decomposition routine
@@ -58,10 +58,10 @@ Program test_lu_solver
   if (rc.eq.1) then
     write(*,*) ' The system matrix is singular, no solution !'
   else
-    ! xi = plot(B, n, m)
 
+    temp(0) = plot(B, n, m) ! temp(0) is not really used
 
   end if
 
-end program test_lu_solver
+end program FEM1DHeat
 
