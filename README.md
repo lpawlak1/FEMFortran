@@ -22,6 +22,8 @@ make
 
 ## Problem
 
+![ -ku^{''}=0 |:-k ](./svgs/103b355cf26a83699a965368d13be59b.svg)
+
 $$
 -k(x) \frac{d^2 u(x)}{dx^2} = 0
 $$
