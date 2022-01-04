@@ -28,6 +28,8 @@ make
 
 ![\frac{du(0)}{dx} + u(0) = 20](./svgs/3.svg)
 
+![k_func](./svgs/k_fun.svg)
+
 ![x \in [0,2]](./svgs/4.svg)
 
 ### Find u(x) in [0,2]
@@ -57,3 +59,11 @@ make
 ![B(w,v) = w(0)v(0)- \int_0^{2}u^{'}v^{'}dx](./svgs/13.svg)
 
 ![\tau(v)= 20v(0)](./svgs/14.svg)
+
+## Code used
+
+During making this project I used:
+
+- ogpf - [Object Based Interface to GnuPlot from Fortran by ](https://github.com/kookma/ogpf)
+- LU decomposition routines (and solver), [F90 version by J-P Moreau, Paris](http://jean-pierre.moreau.pagesperso-orange.fr/Fortran/lu_f90.txt), changed a little to suite bigger max n in LU decomposition
+

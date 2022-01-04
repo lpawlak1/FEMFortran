@@ -4,22 +4,22 @@ module utilities
 contains
 real*8 function CMVHMF(i, j, n)
   implicit none
-  integer, intent(in)  :: i, j, n
-  real*8 :: frm, to, temp
+  integer, intent(in) :: i, j, n
+  real*8              :: frm, to, temp
 
   frm = MAX(0.0 , x(i-1, n), x(j-1, n))
   to = MIN(x(i+1, n), x(j+1, n), 2.0)
-  ! print *, i, j, frm, to
+
   temp = 0.0
-  CMVHMF = v(i, temp, n)*v(j, temp, n) - integrals(frm, to, vprim_wprim, i, j, n)
+  CMVHMF = v(i, 0.0D+00, n)*v(j, 0.0D+00, n) - integrals(frm, to, vprim_wprim, i, j, n)
 
 end function CMVHMF
 
 real*8 function vprim_wprim(i, j, value, n)
   implicit none
   real*8, intent(in)  :: value
-  integer, intent(in)  :: i, j, n
-  real*8 :: output, lv, mv, rv, n2
+  integer, intent(in) :: i, j, n
+  real*8              :: output, lv, mv, rv, n2
 
   lv = x(i-1, n)
   mv = x(i, n)
@@ -54,9 +54,9 @@ end function vprim_wprim
 real*8 function integrals(a, c, k, i, j, n)
   implicit NONE
   real*8, intent(in)  :: a, c
-  integer, intent(in) ::  i, j, n
-  real*8, external :: k
-  real*8 :: abscissa(2)
+  integer, intent(in) :: i, j, n
+  real*8, external    :: k ! function to integral
+  real*8              :: abscissa(2)
 
   abscissa(1) = -0.577350269189625764509148780502D+00
   abscissa(2) = +0.577350269189625764509148780502D+00
@@ -76,8 +76,9 @@ end function x
 real*8 function v(i, value, n)
   implicit none
   integer, INTENT(IN) :: i, n
-  real*8, INTENT(IN) :: value
-  real*8 :: n2
+  real*8, INTENT(IN)  :: value
+  real*8              :: n2
+
   n2 = n
   v = max(1.0 - abs(n2*((value - x(i, n))/2.0)), 0.0)
 end function v
@@ -85,10 +86,10 @@ end function v
 real*8 function suma(array, value, n)
   implicit none
   real*8, DIMENSION(:) :: array
-  real*8 :: value
+  real*8               :: value, output
   integer, intent(in)  :: n
-  integer :: i
-  real*8 :: output
+  integer              :: i
+
   output = 0.0
   i = 1
 
@@ -116,7 +117,7 @@ real*8 function plot(B, n, m)
   end do
 
 ! Annotation: set title, xlabel, ylabel
-  CALL gp%title('Równanie trasportu ciepła')
+  CALL gp%title('Heat transport equation')
   CALL gp%xlabel('x')
   CALL gp%ylabel('y')
   Call gp%options('set style data linespoints')
