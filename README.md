@@ -4,21 +4,30 @@
 
 - gnuplot
 - gfortran
+- linux/mac, no windows port at the moment
 
 ## Installation
 
 ```bash
-make
+make install
 ```
 
 ## Executing
 
 ```bash
-./exec.out
-./exec.out n
+./exec.sh
+./exec.sh n
 ```
 
 ,where `n` stands for amount of elements
+
+## Cleaning
+
+```bash
+make clean
+```
+
+or just delete build folder
 
 ## Problem
 
