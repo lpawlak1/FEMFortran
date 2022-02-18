@@ -29,6 +29,15 @@ make clean
 
 or just delete build folder
 
+## Why Fortran
+
+For this task I could use probably every language except Octave and Matlab. So why Fortran you might have asked?
+
+Well I also did it in Python3 with NumPy
+And here are the times of executions.
+
+![times.png](./svgs/ss_1.png)
+
 ## Problem
 
 ![ -ku^{''}=0 |:-k ](./svgs/1.svg)
@@ -73,6 +82,5 @@ or just delete build folder
 
 During making this project I used:
 
-- ogpf - [Object Based Interface to GnuPlot from Fortran by ](https://github.com/kookma/ogpf)
+- ogpf - [Object Based Interface to GnuPlot from Fortran](https://github.com/kookma/ogpf)
 - LU decomposition routines (and solver), [F90 version by J-P Moreau, Paris](http://jean-pierre.moreau.pagesperso-orange.fr/Fortran/lu_f90.txt), changed a little to suite bigger max n in LU decomposition
-
