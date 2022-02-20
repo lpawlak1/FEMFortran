@@ -29,6 +29,12 @@ make clean
 
 or just delete build folder
 
+## Solution
+
+So the solution looks simple:
+
+![](./svgs/ss_2.png)
+
 ## Why Fortran
 
 For this task I could use probably every language except Octave and Matlab. So why Fortran you might have asked?
